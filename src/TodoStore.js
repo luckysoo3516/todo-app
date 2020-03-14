@@ -33,19 +33,14 @@ function TodoStore() {
   //useState는 state를 (함수형)컴포넌트 내에서 관리할 수 있게 한다.
   //todos는 초기화할때 빈 배열을 넣어주어야한다.
   const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState();
 
   const loading = useFetch(setTodos, 'http://localhost:8080/todo');
 
-  //new Todo는 이 함수를 통해서 생성된다.
-  const changeInputData = (e) => {
-    setNewTodo(e.target.value);
-    console.log("타겟" + e.target.value);
-  }
+  // new Todo는 이 함수를 통해서 생성된다.
+  // changeInputdata의 상위의 store를 변경시키기 때문에 매번 새로 렌더링 된다.
 
   // new Todo를 todos 상태에 추가한다.
-  const addTodo = (e) => {
-    e.preventDefault();
+  const addTodo = (newTodo) => {
     //객체 destructuring 연산자
     setTodos([...todos, { 'title': newTodo, 'id': todos.length, 'status': 'todo' }]);
   }
@@ -78,7 +73,7 @@ function TodoStore() {
   //value값을 useContext가 destructuring해서 사용하고있다.
   return (
     <TodoContext.Provider value=
-    {{todos, addTodo, changeInputData, changeTodoStatus, loading}}>
+    {{todos, addTodo, changeTodoStatus, loading}}>
       <Header />
       <Form />
       <List />
