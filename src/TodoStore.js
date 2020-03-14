@@ -29,7 +29,7 @@ const useFetch = (callback, url) => {
   return loading;
 }
 
-function App() {
+function TodoStore() {
   //useState는 state를 (함수형)컴포넌트 내에서 관리할 수 있게 한다.
   //todos는 초기화할때 빈 배열을 넣어주어야한다.
   const [todos, setTodos] = useState([]);
@@ -86,4 +86,4 @@ function App() {
   );
 }
 
-export default App;
+export default TodoStore;

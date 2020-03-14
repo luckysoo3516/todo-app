@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import Item from './Item.jsx';
-import { TodoContext } from './App.js';
+import { TodoContext } from './TodoStore.js';
 
 //클릭 핸들러를 다루기 위해 li 태그는 Item 컴포넌트로 만든다.
 //Item 컴포넌트에도 todos를 전달해줘서 각 Item별로 일을 할 수 있도록 한다.

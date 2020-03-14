@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './header.css';
-import { TodoContext } from './App.js';
+import { TodoContext } from './TodoStore.js';
 
 //App.js는 store역할을 하기 때문에 나중에 이름을 바꿔야 함.
 // Header에서 Context를 소비해야함. <Context.Consumer>로 todo 정보를 받을 수 있음.
