@@ -4,6 +4,9 @@ import List from './List.jsx';
 import Header from './Header.jsx';
 import Form from './Form.jsx';
 
+//상위의 store역할을 한다. 다른 component에서 사용할 수 있도록 export를 해준다.
+export const TodoContext = React.createContext();
+
 //side effect 부분을 하나의 함수(커스텀 훅)로 만들어서 재사용 가능하게 한다.
 const useFetch = (callback, url) => {
   const [loading, setLoading] = useState(false);
@@ -71,12 +74,15 @@ function App() {
 
   //Header도 todos를 받고 List도 todos를 받아서 렌더링을 하고 있다.
   //List에서 todos를 변경하고 싶다면 Header도 전달받아야한다. 상태관리의 필요성!!
+  //TodoContext.Provide의 value는 {객체형태}로 전달해야함.
+  //value값을 useContext가 destructuring해서 사용하고있다.
   return (
-    <>
-      <Header todos={todos}/>
-      <Form addTodo={addTodo} changeInputData={changeInputData}/>
-      <List todos={todos} loading={loading} changeTodoStatus={changeTodoStatus}/>
-    </>
+    <TodoContext.Provider value=
+    {{todos, addTodo, changeInputData, changeTodoStatus, loading}}>
+      <Header />
+      <Form />
+      <List />
+    </TodoContext.Provider>
   );
 }
 

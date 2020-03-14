@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { TodoContext } from './App';
 
-const Form = ({addTodo, changeInputData}) => {
+const Form = () => {
+    const {addTodo, changeInputData} = useContext(TodoContext);
     return (
         <form action="">
             <input type="text" name="" onChange={changeInputData}></input>
