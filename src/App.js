@@ -1,25 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import List from './List.jsx';
 
 function App() {
+  const [todos, setTodos] = useState(['공지사항 만들기']);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <h1>
+      Todo 애플리케이션
+    </h1>
+    <form action="">
+      <input type="text" name=""></input>
+      <button>할일 추가</button>
+    </form>
+    <List todos={todos}/>
+    </>
   );
 }
 
