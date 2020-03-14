@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import List from './List.jsx';
 import Header from './Header.jsx';
+import Form from './Form.jsx';
 
 //side effect 부분을 하나의 함수(커스텀 훅)로 만들어서 재사용 가능하게 한다.
 const useFetch = (callback, url) => {
@@ -73,10 +74,7 @@ function App() {
   return (
     <>
       <Header todos={todos}/>
-      <form action="">
-        <input type="text" name="" onChange={changeInputData}></input>
-        <button onClick={addTodo}>할일 추가</button>
-      </form>
+      <Form addTodo={addTodo} changeInputData={changeInputData}/>
       <List todos={todos} loading={loading} changeTodoStatus={changeTodoStatus}/>
     </>
   );
